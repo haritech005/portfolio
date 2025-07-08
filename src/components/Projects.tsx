@@ -10,8 +10,8 @@ const Projects = () => {
       title: "Code Sensei AI",
       shortDesc: "AI Learning Companion for Students",
       techStack: ["React", "Node.js", "Next.js", "Supabase", "Vapi", "TailwindCSS", "TypeScript"],
-      description: "A complete e-commerce solution with user authentication, payment processing, and admin dashboard. Features include cart management, order tracking, and responsive design.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
+      description: "An AI-powered voice learning assistant that helps users understand complex computer science topics like DSA, DBMS, OS, and System Design through real-time conversations. Built using Next.js, React, TypeScript, Supabase, Vapi, and Clerk Auth, with a sleek UI powered by Tailwind CSS and ShadCN UI.The platform enables users to interact via text or voice, search and filter topics, and learn through personalized, conversational explanations.",
+      image: "/uploads/codesensei.jpg",
       github: "https://github.com/haritech005/codesensei",
       live: "#",
       status: "IN Progress"
@@ -20,8 +20,8 @@ const Projects = () => {
       title: "AgriTalk AI",
       shortDesc: "AI Chatbot for Farmers",
       techStack: ["React.js", "TypeScript", "Supabase", "PostgreSQL"],
-      description: "A team-based task management application with real-time updates, drag-and-drop functionality, and team collaboration features. Built with modern React patterns.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
+      description: "AGRITALK AI is an AI-powered chatbot built for Tamil Nadu farmers using React.js, TypeScript, and Supabase.It delivers real-time agricultural insights by integrating the KISSAN AI API. Designed with a focus on accessibility, usability, and local language support.",
+      image: "/uploads/agritalk.jpg",
       github: "https://github.com/haritech005/E-Learning",
       live: "#",
       status: "Completed"
@@ -30,8 +30,8 @@ const Projects = () => {
       title: "E-Learning Platform",
       shortDesc: "E-Learning Platforms for Students",
       techStack: ["PHP", "MYSQL", "JavaScript"],
-      description: "Interactive weather dashboard showing real-time data, historical trends, and forecasts. Features beautiful charts and responsive design for multiple device types.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=250&fit=crop",
+      description: "Developed a comprehensive E-Learning platform using HTML, CSS, JavaScript, PHP, and MySQL. The platform features user authentication, course management, interactive lessons, quizzes, and progress tracking. Successfully integrated responsive design for optimal use across devices, enhancing the accessibility and user experience.",
+      image: "/uploads/elearning.jpg",
       github: "https://github.com/haritech005/kissan-ai",
       live: "#",
       status: "Completed"
@@ -68,7 +68,7 @@ const Projects = () => {
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-36 sm:h-48 object-cover transition-transform duration-300 hover:scale-110"
+                        className="w-full h-36 sm:h-48 object-fill transition-transform duration-300 hover:scale-110"
                       />
                       <div className={`absolute top-2 sm:top-3 right-2 sm:right-3 px-2 py-1 ${getStatusColor(project.status)} text-white text-xs rounded-full`}>
                         {project.status}
