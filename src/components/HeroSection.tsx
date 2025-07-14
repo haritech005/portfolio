@@ -38,9 +38,11 @@ const HeroSection = () => {
           </Card>
 
           <div className="flex flex-col gap-3 w-full max-w-xs animate-slide-in-right">
-            <Button variant="outline" size="lg" className="w-full text-sm py-3">
-              📄 View Resume
-            </Button>
+            <a href="/uploads/resume.pdf" target="_blank" rel="noopener noreferrer" className="w-full">
+              <Button variant="outline" size="lg" className="w-full text-sm py-3">
+                📄 View Resume
+              </Button>
+            </a>
             <Button variant="outline" size="lg" className="w-full text-sm py-3">
               <a href="https://github.com/haritech005/" target='blank'>
                 ⚡ GitHub Profile
