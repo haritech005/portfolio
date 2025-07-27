@@ -11,10 +11,15 @@ const Talks = () => {
       description: "Unlocking the power of JAMStack: THE FUTURE OF FRONTEND AND HEADLESS CMS.",
       audience: "150+ developers",
       image: "/uploads/jamstack.jpg",
-      slides: "#"
+      slides: "/uploads/jamstack.ppt"
     },
-
   ];
+
+  // // Function to handle slides viewing without downloading
+  // const viewSlides = (slidesUrl) => {
+  //   // Open in new tab/window to view, not download
+  //   window.open(slidesUrl, '_blank', 'noopener,noreferrer');
+  // };
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-muted/30">
@@ -23,14 +28,22 @@ const Talks = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Speaking Engagements</h2>
           <p className="text-muted-foreground text-base sm:text-lg">Sharing knowledge with the community 🎤</p>
         </div>
-        
+
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          {/* Dynamic grid that centers single item on desktop */}
+          <div className={`grid gap-6 sm:gap-8 ${talks.length === 1
+              ? 'grid-cols-1 lg:flex lg:justify-center'
+              : 'grid-cols-1 lg:grid-cols-2'
+            }`}>
             {talks.map((talk, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group bg-card/80 backdrop-blur-sm">
+              <Card
+                key={index}
+                className={`overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group bg-card/80 backdrop-blur-sm ${talks.length === 1 ? 'lg:max-w-lg' : ''
+                  }`}
+              >
                 <div className="relative overflow-hidden">
-                  <img 
-                    src={talk.image} 
+                  <img
+                    src={talk.image}
                     alt={talk.title}
                     className="w-full h-40 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
@@ -41,7 +54,7 @@ const Talks = () => {
                     {talk.date}
                   </div>
                 </div>
-                
+
                 <CardContent className="p-4 sm:p-6">
                   <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                     {talk.title}
@@ -60,23 +73,23 @@ const Talks = () => {
                       <span>{talk.audience}</span>
                     </div>
                   </div>
-                  
+
                   <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
                     {talk.description}
                   </p>
-                  
-                  <Button 
+
+                  {/* <Button 
                     variant="outline" 
                     className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-sm"
-                    onClick={() => window.open(talk.slides, '_blank')}
+                    onClick={() => viewSlides(talk.slides)}
                   >
                     <span className="mr-2">📊</span> View Slides
-                  </Button>
+                  </Button> */}
                 </CardContent>
               </Card>
             ))}
           </div>
-          
+
           <div className="text-center mt-10 sm:mt-12">
             <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border-none">
               <CardContent className="p-6 sm:p-8">
