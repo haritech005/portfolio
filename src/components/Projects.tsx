@@ -13,7 +13,7 @@ const Projects = () => {
       description: "An AI-powered voice learning assistant that helps users understand complex computer science topics like DSA, DBMS, OS, and System Design through real-time conversations. Built using Next.js, React, TypeScript, Supabase, Vapi, and Clerk Auth, with a sleek UI powered by Tailwind CSS and ShadCN UI.The platform enables users to interact via text or voice, search and filter topics, and learn through personalized, conversational explanations.",
       image: "/uploads/codesensei.png",
       github: "https://github.com/haritech005/codesensei",
-      live: "#",
+      live: "https://code-sensei-ai.vercel.app",
       status: "Completed"
     },
     {
