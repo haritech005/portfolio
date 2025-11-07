@@ -31,7 +31,7 @@ const BeyondCode = () => {
     <section className="py-8 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-foreground">🌟 Beyond Code — What Fuels My Passion</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-foreground">🌟 Beyond Code What Fuels My Passion</h2>
           <p className="text-muted-foreground text-sm sm:text-base">The human side of my developer journey</p>
         </div>
         

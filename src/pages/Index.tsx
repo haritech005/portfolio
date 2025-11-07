@@ -8,6 +8,7 @@ import Projects from '@/components/Projects';
 import Talks from '@/components/Talks';
 import BeyondCode from '@/components/BeyondCode';
 import Contact from '@/components/Contact';
+import Blogs from '@/components/Blogs';
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
       <Skills />
       <Projects />
       <Talks />
+      <Blogs />
       <BeyondCode />
       <Contact />
     </div>

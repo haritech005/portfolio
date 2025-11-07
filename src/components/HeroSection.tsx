@@ -24,7 +24,7 @@ const HeroSection = () => {
                 <p className="text-primary font-semibold text-sm">Web Developer</p>
                 <div className="bg-muted/50 rounded-lg p-2">
                   <p className="text-xs text-muted-foreground italic">
-                    "From Curiosity to Code — My Developer Journey"
+                    "From Curiosity to Code My Developer Journey"
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground mt-3">
@@ -48,9 +48,9 @@ const HeroSection = () => {
                 ⚡ GitHub Profile
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="w-full text-sm py-3">
+              <Button variant="outline" size="lg" className="w-full text-sm py-3">
               <a href="https://www.linkedin.com/in/hariharan001/" target='blank'>
-                💼 LinkedIn
+                💼 Linkedin Profile
               </a>
             </Button>
           </div>

@@ -167,6 +167,14 @@ const Contact = () => {
               >
                 <span className="mr-1">✉️</span> Email
               </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="hover:bg-red-500 hover:text-white transition-colors text-xs sm:text-sm"
+                onClick={() => window.open('https://medium.com/@j.hariharan005')}
+              >
+                <span className="mr-1">📖</span> Medium
+              </Button>
             </div>
           </div>
         </div>
