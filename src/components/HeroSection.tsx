@@ -38,7 +38,7 @@ const HeroSection = () => {
           </Card>
 
           <div className="flex flex-col gap-3 w-full max-w-xs animate-slide-in-right">
-            <a href="/uploads/resume.pdf" target="_blank" rel="noopener noreferrer" className="w-full">
+            <a href="/uploads/HariharanResume.pdf" target="_blank" rel="noopener noreferrer" className="w-full">
               <Button variant="outline" size="lg" className="w-full text-sm py-3">
                 📄 View Resume
               </Button>
