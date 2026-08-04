@@ -1,109 +1,120 @@
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import React from 'react';
+import { Mic, Calendar, MapPin, Users, Presentation, ExternalLink, Download } from 'lucide-react';
 
-const Talks = () => {
-  const talks = [
-    {
-      title: "Unlocking the power of JAMStack",
-      event: "Code on JVM TechMeetup 2025",
-      location: "Chennai",
-      date: "June 2025",
-      description: "Unlocking the power of JAMStack: THE FUTURE OF FRONTEND AND HEADLESS CMS.",
-      audience: "150+ developers",
-      image: "/uploads/jamstack.jpg",
-      slides: "/uploads/jamstack.ppt"
-    },
-  ];
+interface Talk {
+  title: string;
+  event: string;
+  location: string;
+  date: string;
+  description: string;
+  audience: string;
+  image: string;
+  slides?: string;
+}
 
-  // // Function to handle slides viewing without downloading
-  // const viewSlides = (slidesUrl) => {
-  //   // Open in new tab/window to view, not download
-  //   window.open(slidesUrl, '_blank', 'noopener,noreferrer');
-  // };
+const talks: Talk[] = [
+  {
+    title: "Unlocking the power of JAMstack",
+    event: "Code on JVM TechMeetup 2025",
+    location: "Chennai, India",
+    date: "June 2025",
+    description: "The future of frontend architecture and headless CMS integrations. Practical strategies for building fast, decoupled, and secure web applications.",
+    audience: "150+ Developers & Engineers",
+    image: "/uploads/jamstack.jpg",
+    slides: "/uploads/jamstack.ppt"
+  }
+];
 
+export const Talks: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-14 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">Speaking Engagements</h2>
-          <p className="text-muted-foreground text-base sm:text-lg">Sharing knowledge with the community 🎤</p>
+    <section id="talks" className="py-24 relative px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto space-y-12">
+        
+        {/* Section Header */}
+        <div className="text-center space-y-4 max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-semibold">
+            <Mic className="w-3.5 h-3.5" />
+            <span>Community & Tech Talks</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+            Speaking <span className="text-gradient-cyan">Engagements</span>
+          </h2>
+          <p className="text-slate-400 text-sm sm:text-base">
+            Sharing tech insights on modern JAMstack architecture, Next.js, and headless CMS ecosystems.
+          </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Dynamic grid that centers single item on desktop */}
-          <div className={`grid gap-6 sm:gap-8 ${talks.length === 1
-              ? 'grid-cols-1 lg:flex lg:justify-center'
-              : 'grid-cols-1 lg:grid-cols-2'
-            }`}>
-            {talks.map((talk, index) => (
-              <Card
-                key={index}
-                className={`overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group bg-card/80 backdrop-blur-sm ${talks.length === 1 ? 'lg:max-w-lg' : ''
-                  }`}
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={talk.image}
-                    alt={talk.title}
-                    className="w-full h-40 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white text-3xl sm:text-4xl animate-bounce">🎤</div>
+        {/* Talks Grid */}
+        <div className="max-w-3xl mx-auto">
+          {talks.map((talk, idx) => (
+            <div
+              key={idx}
+              className="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 glass-card-hover grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+            >
+              {/* Left Image Banner */}
+              <div className="md:col-span-5 relative rounded-2xl overflow-hidden aspect-video md:aspect-square bg-slate-900 border border-white/10 group">
+                <img
+                  src={talk.image}
+                  alt={talk.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/uploads/placeholder.svg';
+                  }}
+                />
+                <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <Mic className="w-8 h-8 text-cyan-400 animate-pulse" />
+                </div>
+              </div>
+
+              {/* Right Content */}
+              <div className="md:col-span-7 space-y-4">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>{talk.date}</span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
+                  {talk.title}
+                </h3>
+
+                <div className="space-y-1.5 text-xs text-slate-300">
+                  <div className="flex items-center gap-2 font-medium">
+                    <Presentation className="w-4 h-4 text-cyan-400" />
+                    <span>{talk.event}</span>
                   </div>
-                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-primary text-primary-foreground px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-                    {talk.date}
+                  <div className="flex items-center gap-2 text-slate-400">
+                    <MapPin className="w-4 h-4 text-slate-500" />
+                    <span>{talk.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-400">
+                    <Users className="w-4 h-4 text-slate-500" />
+                    <span>{talk.audience}</span>
                   </div>
                 </div>
 
-                <CardContent className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                    {talk.title}
-                  </h3>
-                  <div className="space-y-1 sm:space-y-2 mb-3 sm:mb-4 text-xs sm:text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <span>🏛️</span>
-                      <span>{talk.event}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>📍</span>
-                      <span>{talk.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>👥</span>
-                      <span>{talk.audience}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
-                    {talk.description}
-                  </p>
-
-                  {/* <Button 
-                    variant="outline" 
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-sm"
-                    onClick={() => viewSlides(talk.slides)}
-                  >
-                    <span className="mr-2">📊</span> View Slides
-                  </Button> */}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-10 sm:mt-12">
-            <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border-none">
-              <CardContent className="p-6 sm:p-8">
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Interested in having me speak?</h3>
-                <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">
-                  I love sharing knowledge about web development, React, and developer productivity.
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  {talk.description}
                 </p>
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm sm:text-base">
-                  <span className="mr-2">✉️</span><a href="#contact"> Get in Touch</a>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+
+                {talk.slides && (
+                  <div className="pt-2">
+                    <a
+                      href={talk.slides}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-slate-200 hover:text-cyan-400 transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Download Presentation (.PPT)</span>
+                    </a>
+                  </div>
+                )}
+
+              </div>
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );

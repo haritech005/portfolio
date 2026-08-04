@@ -1,28 +1,28 @@
-
-import ThemeToggle from '@/components/ThemeToggle';
+import React from 'react';
+import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
-import TechJourney from '@/components/TechJourney';
 import WorkExperience from '@/components/WorkExperience';
-import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
+import Skills from '@/components/Skills';
 import Talks from '@/components/Talks';
-import BeyondCode from '@/components/BeyondCode';
-import Contact from '@/components/Contact';
 import Blogs from '@/components/Blogs';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
 
-const Index = () => {
+const Index: React.FC = () => {
   return (
-    <div className="min-h-screen">
-      <ThemeToggle />
-      <HeroSection />
-      <TechJourney />
-      <WorkExperience />
-      <Skills />
-      <Projects />
-      <Talks />
-      <Blogs />
-      <BeyondCode />
-      <Contact />
+    <div className="min-h-screen bg-slate-950 text-slate-100 overflow-x-hidden">
+      <Navbar />
+      <main>
+        <HeroSection />
+        <WorkExperience />
+        <Projects />
+        <Skills />
+        <Talks />
+        <Blogs />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 };

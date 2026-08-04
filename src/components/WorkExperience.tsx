@@ -1,133 +1,130 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
-import { Calendar } from 'lucide-react';
+import React from 'react';
+import { Briefcase, Calendar, MapPin, CheckCircle2, ChevronRight, Building2, Package, Sparkles } from 'lucide-react';
 
-const WorkExperience = () => {
-  const internships = [
-    {
-      company: "Lumel Technologies",
-      role: "Product Developer Intern",
-      timeline: "Sep 2024 - Mar 2025",
-      achievements: [
-        "Contributed to building ValQ, a Power BI product for business modeling and scenario simulation.",
-        "Developed and optimized interactive UIs using React.js and TypeScript for better performance.", 
-        "Worked with BI tools like xViz and Inforiver, focusing on integration, scalability, and compatibility.",
-      ],
-      techStack: ["React", "JavaScript", "Git", "PowerBI"]
-    },
-    {
-      company: "Marcello Tech",
-      role: "Web Developer Trainee Intern", 
-      timeline: "May 2023 - August 2023",
-      achievements: [
-        "Taught HTML, CSS, JavaScript, and MySQL to students as part of web development training.",
-        "Built and improved front-end projects, focusing on user interface design and functionality.",
-        "Worked with senior developers to debug code and gained hands-on experience in web technologies.",
-      ],
-      techStack: ["HTML", "CSS", "JavaScript", "MySQL", "API", "Git"]
-    }
-  ];
+const experiences = [
+  {
+    company: 'Lumel Technologies',
+    location: 'Chennai, India',
+    role: 'Web Developer',
+    timeline: 'March 2025 – Present',
+    status: 'Current Role',
+    description: 'Developing scalable frontend applications and internal package ecosystems.',
+    bullets: [
+      'Developed and maintained scalable frontend applications using Next.js, React.js, and TypeScript, delivering responsive, cross-browser UIs with high performance.',
+      'Built reusable UI components and integrated REST & GraphQL APIs using Strapi CMS, resolving integration friction and streamlining data delivery.',
+      'Authored and published reusable frontend packages via GitHub Packages, enforcing architectural consistency and code reuse across multiple internal projects.',
+      'Collaborated with designers, marketers, and engineering leads using Git/GitHub to ship production-ready features on tight schedules.'
+    ],
+    skills: ['Next.js', 'React.js', 'TypeScript', 'Strapi CMS', 'GraphQL', 'REST APIs', 'GitHub Packages', 'Tailwind CSS']
+  },
+  {
+    company: 'Lumel Technologies',
+    location: 'Chennai, India',
+    role: 'Product Developer Intern',
+    timeline: 'Sept 2024 – Feb 2025',
+    status: 'Completed',
+    description: 'Worked on Microsoft Power BI decision intelligence products (ValQ, xViz, Inforiver).',
+    bullets: [
+      'Contributed to ValQ, a business modeling and decision intelligence product for Microsoft Power BI enabling advanced scenario simulation.',
+      'Developed and optimized interactive user interfaces using React.js and TypeScript, significantly improving component rendering performance.',
+      'Collaborated with engineering leads to ensure seamless UI integration, scalability, and cross-product compatibility across xViz and Inforiver BI products.'
+    ],
+    skills: ['React.js', 'TypeScript', 'Power BI Ecosystem', 'ValQ', 'xViz', 'Inforiver', 'UI Performance']
+  }
+];
 
-  const fullTimeExperience = [
-    {
-      company: "Lumel Technologies",
-      role: "Web Developer Trainee",
-      timeline: "March 2025 - Present", 
-      achievements: [
-        "Built and maintained responsive frontend apps using Next.js, React.js, and TypeScript.",
-        "Structured backend content with Strapi.js and integrated dynamic content via REST APIs.",
-        "Published an internal npm package and worked with cross-functional teams to deliver user-friendly features.",
-      ],
-      techStack: ["React", "TypeScript", "Strapi.js", "REST API", "GraphQL", "Tailwind CSS" ,"ShadCN UI"]
-    }
-  ];
-
-  const ExperienceCard = ({ experience }) => (
-    <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] mb-4 sm:mb-6">
-      <CardHeader className="pb-3 sm:pb-4">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between">
-          <div className="flex-1">
-            <CardTitle className="text-lg sm:text-xl font-bold text-primary mb-1">
-              {experience.company}
-            </CardTitle>
-            <h3 className="text-base sm:text-lg font-semibold mb-2">{experience.role}</h3>
-            <div className="flex items-center text-muted-foreground text-sm">
-              <Calendar className="w-4 h-4 mr-2 flex-shrink-0" />
-              <span className="break-words">{experience.timeline}</span>
-            </div>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent className="pt-0">
-        <div className="mb-4 sm:mb-6">
-          <h4 className="font-semibold mb-2 sm:mb-3 text-foreground text-sm sm:text-base">Key Achievements:</h4>
-          <ul className="space-y-1 sm:space-y-2">
-            {experience.achievements.map((achievement, index) => (
-              <li key={index} className="flex items-start text-xs sm:text-sm">
-                <span className="text-green-500 mr-2 mt-1 flex-shrink-0">✅</span>
-                <span className="leading-relaxed">{achievement}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        
-        <div>
-          <h4 className="font-semibold mb-2 sm:mb-3 text-foreground text-sm sm:text-base">Tech Stack:</h4>
-          <div className="flex flex-wrap gap-1 sm:gap-2">
-            {experience.techStack.map((tech, index) => (
-              <Badge key={index} variant="secondary" className="text-xs sm:text-sm px-2 py-1">
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-
+export const WorkExperience: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-4">Work Experience</h2>
-          <p className="text-muted-foreground text-base sm:text-lg px-4">My professional journey in code</p>
-        </div>
+    <section id="experience" className="py-24 relative px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto space-y-12">
         
-        <div className="max-w-4xl mx-auto">
-          <Tabs defaultValue="internships" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-6 sm:mb-8 h-auto">
-              <TabsTrigger value="internships" className="text-sm sm:text-base py-2 sm:py-3 px-2 sm:px-4">
-                <span className="hidden sm:inline">🧪 </span>Internships
-              </TabsTrigger>
-              <TabsTrigger value="fulltime" className="text-sm sm:text-base py-2 sm:py-3 px-2 sm:px-4">
-                <span className="hidden sm:inline">💼 </span>Full-Time
-              </TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="internships" className="space-y-4 sm:space-y-6">
-              <div className="text-center mb-4 sm:mb-6">
-                <p className="text-muted-foreground text-sm sm:text-base px-4">
-                  Where I learned the fundamentals and built my foundation
-                </p>
-              </div>
-              {internships.map((internship, index) => (
-                <ExperienceCard key={index} experience={internship} />
-              ))}
-            </TabsContent>
-            
-            <TabsContent value="fulltime" className="space-y-4 sm:space-y-6">
-              <div className="text-center mb-4 sm:mb-6">
-                <p className="text-muted-foreground text-sm sm:text-base px-4">
-                  Putting skills into practice and making real impact
-                </p>
-              </div>
-              {fullTimeExperience.map((job, index) => (
-                <ExperienceCard key={index} experience={job} />
-              ))}
-            </TabsContent>
-          </Tabs>
+        {/* Section Header */}
+        <div className="text-center space-y-4 max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-400 text-xs font-semibold">
+            <Briefcase className="w-3.5 h-3.5" />
+            <span>Career History</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-tight">
+            Professional <span className="text-gradient-indigo">Experience</span>
+          </h2>
+          <p className="text-slate-400 text-sm sm:text-base">
+            Proven track record of delivering enterprise-grade React, Next.js, and Power BI tools at Lumel Technologies.
+          </p>
         </div>
+
+        {/* Timeline Container */}
+        <div className="relative border-l-2 border-slate-800 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-12">
+          {experiences.map((exp, idx) => (
+            <div key={idx} className="relative group">
+              
+              {/* Timeline Dot Indicator */}
+              <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-5 h-5 rounded-full bg-slate-950 border-2 border-cyan-400 flex items-center justify-center group-hover:scale-125 group-hover:bg-cyan-400 transition-all duration-300 shadow-md shadow-cyan-500/30">
+                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 group-hover:bg-slate-950" />
+              </div>
+
+              {/* Bento Experience Card */}
+              <div className="glass-card p-6 sm:p-8 rounded-2xl border border-white/10 glass-card-hover space-y-6">
+                
+                {/* Top Info Header */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-xl font-bold text-slate-100">{exp.role}</h3>
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-cyan-950 text-cyan-400 border border-cyan-500/30">
+                        {exp.status}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-slate-400 mt-1 font-medium">
+                      <span className="flex items-center gap-1 text-slate-300">
+                        <Building2 className="w-3.5 h-3.5 text-cyan-400" />
+                        {exp.company}
+                      </span>
+                      <span>•</span>
+                      <span className="flex items-center gap-1">
+                        <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                        {exp.location}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-cyan-300 self-start sm:self-auto">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>{exp.timeline}</span>
+                  </div>
+                </div>
+
+                {/* Bullets */}
+                <ul className="space-y-3">
+                  {exp.bullets.map((bullet, bIdx) => (
+                    <li key={bIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Tech Badges */}
+                <div className="pt-4 border-t border-white/10">
+                  <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2.5">
+                    Technologies Used
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.skills.map((skill, sIdx) => (
+                      <span
+                        key={sIdx}
+                        className="px-3 py-1 rounded-lg text-xs font-mono bg-slate-900/80 border border-white/10 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-300 transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

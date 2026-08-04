@@ -1,60 +1,173 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import React, { useState } from 'react';
+import { ArrowRight, Github, Linkedin, FileText, CheckCircle2, Mic } from 'lucide-react';
 
-const HeroSection = () => {
+export const HeroSection: React.FC = () => {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
+
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
+
   return (
-    <section className="min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 relative overflow-hidden px-4 py-6 sm:py-8">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
-        <div className="absolute top-20 right-10 w-32 h-32 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-10 left-1/2 w-32 h-32 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '4s' }}></div>
-      </div>
+    <section id="hero" className="min-h-screen pt-28 pb-16 flex items-center justify-center relative overflow-hidden px-4 sm:px-6">
+      {/* Background Ambient Glow Orbs */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-cyan-500/10 to-indigo-500/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-      <div className="container mx-auto px-4 relative z-10 max-w-5xl">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-10">
-          <Card className="w-full max-w-xs sm:max-w-sm bg-card/80 backdrop-blur-sm border-2 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 animate-fade-in">
-            <CardContent className="p-5 sm:p-9">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl font-bold shadow-lg">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden ring-2 ring-gradient-to-br mx-auto">
-                  <img src="/uploads/hariharan.jpg" alt="Profile" />
-                </div>
-              </div>
-              <div className="text-center space-y-2">
-                <h1 className="text-lg sm:text-xl font-bold text-foreground">Hariharan J</h1>
-                <p className="text-primary font-semibold text-sm">Web Developer</p>
-                <div className="bg-muted/50 rounded-lg p-2">
-                  <p className="text-xs text-muted-foreground italic">
-                    "From Curiosity to Code My Developer Journey"
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground mt-3">
-                  <div>ID: DEV001</div>
-                  <div>Level: Junior</div>
-                  <div>Exp: 0-1 Years</div>
-                  <div>Status: Active</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
-          <div className="flex flex-col gap-3 w-full max-w-xs animate-slide-in-right">
-            <a href="/uploads/HariharanResume.pdf" target="_blank" rel="noopener noreferrer" className="w-full">
-              <Button variant="outline" size="lg" className="w-full text-sm py-3">
-                📄 View Resume
-              </Button>
+        {/* Left Column: Headline & Bio */}
+        <div className="lg:col-span-7 space-y-4 text-center lg:text-left">
+
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-400 text-xs font-medium backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+            <span className="w-2 h-2 rounded-full bg-cyan-400 -ml-4" />
+            <span>Web Developer @ Lumel Technologies</span>
+          </div>
+
+          {/* Main Title (Clean 2-Line Layout) */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-100 leading-[1.2] lg:leading-[1.15]">
+            Engineering <span className="text-gradient-cyan">Scalable Web Apps</span> <br className="hidden sm:inline" />
+            & Modern Interfaces.
+          </h1>
+
+          {/* Bio */}
+          <p className="text-slate-400 text-base sm:text-lg max-w-2xl leading-relaxed mx-auto lg:mx-0 pt-1">
+            Frontend & Fullstack Engineer with <span className="text-slate-200 font-semibold">1+ years of experience</span> crafting responsive React/Next.js platforms, publishing reusable npm packages, and integrating robust backend APIs.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-3">
+            <a
+              href="#projects"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-400 text-slate-950 font-semibold text-sm flex items-center gap-2 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all duration-300"
+            >
+              <span>Explore Projects</span>
+              <ArrowRight className="w-4 h-4" />
             </a>
-            <Button variant="outline" size="lg" className="w-full text-sm py-3">
-              <a href="https://github.com/haritech005/" target='blank'>
-                ⚡ GitHub Profile
+
+            <a
+              href="/uploads/HariharanResume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 text-sm font-semibold flex items-center gap-2 transition-all duration-300 hover:border-cyan-500/30"
+            >
+              <FileText className="w-4 h-4 text-cyan-400" />
+              <span>Download CV</span>
+            </a>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-2 pl-2">
+              <a
+                href="https://github.com/haritech005/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-cyan-400 border border-white/10 transition-colors"
+              >
+                <Github className="w-4 h-4" />
               </a>
-            </Button>
-              <Button variant="outline" size="lg" className="w-full text-sm py-3">
-              <a href="https://www.linkedin.com/in/hariharan001/" target='blank'>
-                💼 Linkedin Profile
+              <a
+                href="https://www.linkedin.com/in/hariharan001/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-cyan-400 border border-white/10 transition-colors"
+              >
+                <Linkedin className="w-4 h-4" />
               </a>
-            </Button>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Right Column: Code-Editor Style Card */}
+        <div className="lg:col-span-5 flex justify-center">
+          <div
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+              transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+              transition: 'transform 0.15s ease-out',
+            }}
+            className="relative max-w-sm w-full p-6 rounded-3xl glass-card border border-white/15 shadow-2xl shadow-cyan-500/10 group"
+          >
+            {/* Top Bar inside Card */}
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
+              <div className="flex items-center gap-1.5">
+                <span className="w-3 h-3 rounded-full bg-red-500/80" />
+                <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+              </div>
+              <span className="text-[10px] font-mono text-slate-400 tracking-wider">HARIHARAN_DEV.TS</span>
+            </div>
+
+            {/* Avatar Image Frame with Face Alignment */}
+            <div className="relative w-48 h-48 sm:w-52 sm:h-52 mx-auto mb-6">
+
+              {/* Outer Pulsing Aura */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500 to-indigo-500 opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500 animate-pulse" />
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-cyan-400 via-emerald-400 to-indigo-500 p-[2px] opacity-80 shadow-lg shadow-cyan-500/30">
+                <div className="w-full h-full bg-slate-950 rounded-full" />
+              </div>
+
+              {/* Photo Image Frame */}
+              <div className="relative z-10 w-full h-full rounded-full overflow-hidden p-1 bg-slate-900">
+                <img
+                  src="/uploads/hariharan.jpg"
+                  alt="Hariharan J - Web Developer & Speaker"
+                  className="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/uploads/hariharan.jpg';
+                  }}
+                />
+              </div>
+
+              {/* Speaker Badge */}
+              <div className="absolute -top-1 -right-1 z-20 p-2 rounded-full bg-slate-900 border border-cyan-500/40 text-cyan-400 shadow-md">
+                <Mic className="w-3.5 h-3.5" />
+              </div>
+
+              {/* Status Badge Tag */}
+              <div className="absolute -bottom-2 inset-x-0 mx-auto w-max z-20 px-3 py-1 rounded-full bg-slate-900/90 border border-emerald-500/40 text-[11px] font-medium text-emerald-400 flex items-center gap-1.5 shadow-lg backdrop-blur-md">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>Open for Opportunities</span>
+              </div>
+            </div>
+
+            {/* Title & Info inside Card */}
+            <div className="text-center space-y-2">
+              <h2 className="text-xl font-bold text-slate-100">Hariharan J</h2>
+              <p className="text-xs text-cyan-400 font-medium">Web Developer @ Lumel Technologies</p>
+
+              {/* Stack Pills (Top 4 Relevant Tags) */}
+              <div className="flex flex-wrap justify-center gap-1.5 pt-3">
+                {['Next.js', 'React.js', 'TypeScript', 'Supabase'].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-white/5 border border-white/10 text-slate-300 hover:border-cyan-500/30 transition-colors"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );
